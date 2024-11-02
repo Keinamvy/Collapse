@@ -60,15 +60,3 @@ jobs:
           name: collapse_${{ matrix.platform }}-${{ matrix.configuration }}_${{ matrix.framework }}_${{ github.sha }}
           path: ./CollapseLauncher/preview-build/
           compression-level: 9
-    
-    - name: Notify Discord
-      uses: sarisia/actions-status-discord@v1.13.0
-      if: always()
-      continue-on-error: true
-      with:
-        webhook: ${{ secrets.DISCORD_WEBHOOK_NIGHTLY }}
-        title: Collapse Launcher CI build is complete!
-        status: ${{ job.status }}
-        description: |
-          Commit `${{ github.sha }}` by ${{ github.actor }}
-          Click [here](https://nightly.link/CollapseLauncher/Collapse/actions/runs/${{ github.run_id }}) to download!
