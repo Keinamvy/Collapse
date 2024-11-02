@@ -64,7 +64,7 @@ internal class MyEmphasisInline : IAddChild
 
     public void SetStrikeThrough()
     {
-        _span.TextDecorations = Microsoft.UI.Xaml.TextDecorations.Strikethrough;
+        _span.TextDecorations = Windows.UI.Text.TextDecorations.Strikethrough;
         _isStrikeThrough = true;
     }
 
