@@ -45,8 +45,11 @@ jobs:
         dotnet-version: ${{ env.DOTNET_VERSION }}
         dotnet-quality: ${{ env.DOTNET_QUALITY }}
         cache: true
+        cache-key: ${{ runner.os }}-dotnet-${{ env.DOTNET_VERSION }}-nocache
         cache-dependency-path: CollapseLauncher/packages.lock.json
-
+    - name: Clean the Solution
+      run: dotnet clean ${{ env.Solution_Name }} -c ${{ matrix.configuration }}
+      
     - name: Build
       run: |
         dotnet publish CollapseLauncher -p:PublishProfile=Publish-DebugCIRelease -p:PublishDir=".\debug-build\"
